@@ -1,168 +1,666 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+html,
+body {
+    font-family: var(--font-dm-sans), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+.page {
+    background-color: #F4EDE7;
+    font-family: var(--font-dm-sans), sans-serif;
+    position: relative;
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
+.routeSection {
+    padding-left: 250px;
+}
+
+.header {
+    height: 60px;
+    background-color: #F3F0EC;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid rgb(199, 198, 198);
+    padding-right: 20px;
+}
+
+.headerSearch {
+    width: 300px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.headerSearch input {
+    width: 250px;
+    border: none;
+    padding-left: 10px;
+    font-family: var(--font-dm-sans), sans-serif;
+}
+
+.headerLang {
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 7px;
+}
+
+.headerLang select {
+    border: none;
+    font-family: var(--font-dm-sans), sans-serif;
+}
+
+.headerSignin button {
+    height: 30px;
+    width: 80px;
+    background-color: #01383D;
+    color: white;
+    border-radius: 7px;
+    font-family: var(--font-dm-sans), sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #F3F0EC;
+    border-right: 1px solid rgb(199, 198, 198);
+    border-bottom: 1px solid rgb(199, 198, 198);
+    width: 200px;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 8px;
+}
+
+.routesDiv {
+    margin-top: 40px;
+}
+
+.routesDiv a {
+    color: grey;
+}
+
+.routesDiv a:hover {
+    color: black;
+}
+
+.route {
+    margin-top: 20px;
+    padding-left: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.contact {
+    margin-bottom: 24px;
+}
+
+.invite {
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: white;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.invite button {
+    font-family: inherit;
+    background-color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.socials {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.socials svg {
+    cursor: pointer;
 }
 
 .main {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+    background-color: #F4EDE7;
+    margin-left: 250px;
+    margin-top: 20px;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
-}
-
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
-  display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
-
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
-}
-
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
+.categories {
+    margin-top: 40px;
+    display: flex;
     flex-direction: column;
-  }
+}
 
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
+.categoriesDiv2 {
+    display: flex;
     flex-wrap: wrap;
+    gap: 8px;
+}
+
+.readersDiv1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    margin-bottom: 8px;
+}
+
+.readersDiv1Div {
+    display: flex;
     align-items: center;
     justify-content: center;
-  }
+    gap: 8px;
+    margin-right: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.readersDiv2 {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 10px;
+}
+
+.readersDiv2::-webkit-scrollbar {
+    display: none;
+}
+
+.readersCard {
+    font-size: 14px;
+}
+
+.readersCard h4 {
+    width: 190px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.readersCard p {
+    color: gray;
+}
+
+.readersCard img {
+    width: 200px;
+    height: 300px;
+}
+
+.readersCard div {
+    display: flex;
+    gap: 8px;
+}
+
+.readersDiv1Div button {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.categoriesDiv1 {
+    margin-bottom: 8px;
+}
+
+.categoriesCard {
+    background-color: white;
+    border-radius: 8px;
+    display: flex;
+    padding: 8px;
+    gap: 5px;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.featuredBooks {
+    margin-top: 40px;
+}
+
+.curatedPathways {
+    margin-top: 40px;
+}
+
+.curatedPathways p {
+    font-size: 12px;
+    color: gray;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.curatedCardList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.curatedCard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(to right, #8B8FFF, #6BCCDE);
+    overflow: hidden;
+}
+
+.curatedCard h2 {
+    margin-top: 20px;
+    margin-left: 20px;
+    color: white;
+}
+
+.curatedCard p {
+    margin-top: 4px;
+    margin-left: 20px;
+    color: white;
+}
+
+.curatedCardInside {
+    width: 230px;
+    height: 130px;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.curatedCardInside div {
+    width: 100px;
+    height: 130px;
+    overflow: hidden;
+}
+
+.curatedCardInsideDiv img {
+    width: 100px;
+    height: 130px;
+}
+
+.booksMonth {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.booksMonthHeading {
+    margin-bottom: 8px;
+}
+
+.booksMonthContent {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+.booksMonthCardDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+.booksMonthCardDiv p {
+    font-size: 12px;
+}
+
+.booksMonthCard1 {
+    border-radius: 10px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #DAE4FF;
+}
+
+.booksMonthCard1 img {
+    border-radius: 10px;
+}
+
+.booksMonthCard2 {
+    border-radius: 10px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    background-color: #F7E5A4;
+}
+
+.booksMonthCard2 img {
+    border-radius: 10px;
+}
+
+.booksMonthCardBtnsDiv {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+}
+
+.booksMonthCardBtnsDiv div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    width: 100px;
+}
+
+.booksMonthCardButton1 {
+    background-color: #01383D;
+    color: white;
+}
+
+.booksMonthCardButton2 {
+    background-color: white;
+}
+
+.bottomLogo {
+    margin-bottom: 300px;
+}
+
+.library {
+    margin-left: 250px;
+}
+
+.bookButtons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+    margin-top: 20px;
+}
+
+.bookButtonsBackButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 75px;
+    height: 30px;
+    font-size: 14px;
+}
+
+.ellipsesSelector {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    position: absolute;
+    top: 110px;
+    right: 35px;
+}
+
+.ellipsesSelector div {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+}
+
+.ellipsesSelectorButton {
+    font-size: 25px;
+}
+
+.libBooksDetail {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.libBooksDetailContent {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+}
+
+.libBooksDetailCardDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.libBooksDetailCard1 {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.partsAndMins {
+    display: flex;
+    gap: 20px;
+}
+
+.partsAndMins div {
+    display: flex;
+    gap: 8px;
+}
+
+.libBooksDetailCard1 img {
+    border-radius: 10px;
+    height: 300px;
+    width: 200px;
+}
+
+.libBooksDetailCardBtnsDiv {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+}
+
+.libBooksDetailCardBtnsDiv div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 8px;
+    width: 130px;
+    height: 40px;
+}
+
+.libBooksDetailCardButton1 {
+    background-color: #01383D;
+    color: white;
+}
+
+.libBooksDetailCardButton2 {
+    background-color: white;
+}
+
+.bookTags {
+    display: flex;
+    gap: 10px;
+}
+
+.bookTags div {
+    display: flex;
+    padding: 5px;
+    color: #01383D;
+    background-color: #aebec0;
+    gap: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.bookPreface {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookContents {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.booksContentsSection {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: start;
+}
+
+.moreLikeThis {
+    margin-top: 40px;
+}
+
+.bookAuthor {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookAuthorContents {
+    border-radius: 10px;
+    border: 1px solid rgb(214, 212, 212);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bookAuthorContents p {
+    color: gray;
+}
+
+@media (max-width:430px) {
+    .main {
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 92.6vh;
+        background-color: white;
+        border-top: 1px solid rgb(199, 198, 198);
+        width: 100%;
+        height: 50px;
+        display: flex;
+        z-index: 100;
+    }
+
+    .logo {
+        display: none;
+        margin-top: 0;
+        gap: 0;
+    }
+
+    .routesDiv {
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 5px;
+    }
+
+    .route {
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact {
+        display: none;
+    }
+
+    .library {
+        margin-left: 0px;
+        padding: 10px;
+    }
+
+    .libBooksDetailCard1 {
+        flex-direction: column;
+    }
+
+    .booksMonthContent {
+        display: flex;
+    }
+
+    .header {
+        height: 40px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        padding-right: 10px;
+    }
+
+    .headerSearch {
+        width: 150px;
+        background-color: white;
+        padding: 5px;
+        border-radius: 7px;
+    }
+
+    .headerSearch input {
+        width: 120px;
+        border: none;
+        padding-left: 10px;
+        font-family: var(--font-dm-sans), sans-serif;
+    }
+
+    .headerLang {
+        background-color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: 7px;
+    }
+
+    .headerLang select {
+        border: none;
+        font-family: var(--font-dm-sans), sans-serif;
+    }
+
+    .headerSignin button {
+        height: 30px;
+        width: 80px;
+        background-color: #01383D;
+        color: white;
+        border-radius: 7px;
+        font-family: var(--font-dm-sans), sans-serif;
+    }
 }
